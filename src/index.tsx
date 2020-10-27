@@ -6,7 +6,11 @@ const App: FunctionComponent = () => {
 
   useEffect(() => {
     test;
+    test;
+    // eslint-error
   }, []);
 
   return <div>App</div>;
 };
+
+export { App };
