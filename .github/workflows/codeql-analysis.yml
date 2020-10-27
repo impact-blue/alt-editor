@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["js"]
+        language: ["javascript"]
     steps:
       - uses: actions/checkout@v2
         with:
