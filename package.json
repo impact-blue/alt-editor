@@ -1,8 +1,13 @@
 {
   "name": "alt-editor",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "An alternative block editor of Editor.js written in React",
+  "keywords": [
+    "alt-editor",
+    "block editor",
+    "editor.js",
+    "editorjs"
+  ],
   "homepage": "",
   "bugs": {
     "url": "https://github.com/impact-blue/alt-editor/issues"
