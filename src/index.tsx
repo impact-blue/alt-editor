@@ -1,16 +1,5 @@
-import { useEffect } from "react";
 import type { FunctionComponent } from "react";
 
-const App: FunctionComponent = () => {
-  const test = "test";
+const ALTEditor: FunctionComponent = () => <div>ALTEditor</div>;
 
-  useEffect(() => {
-    test;
-    test;
-    // eslint-error
-  }, []);
-
-  return <div>App</div>;
-};
-
-export { App };
+export { ALTEditor };
