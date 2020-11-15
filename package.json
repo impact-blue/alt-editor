@@ -34,6 +34,7 @@
     "@babel/preset-typescript": "^7.12.1",
     "@cypress/code-coverage": "^3.8.2",
     "@editorjs/editorjs": "^2.19.0",
+    "@editorjs/paragraph": "^2.8.0",
     "@types/react": "^16.9.53",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",

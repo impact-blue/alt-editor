@@ -1,4 +1,10 @@
-import type { OutputBlockData, OutputData } from "@editorjs/editorjs";
+import type {
+  OutputBlockData,
+  OutputData,
+  BlockTool,
+} from "@editorjs/editorjs";
+// @ts-expect-error
+import Paragraph from "@editorjs/paragraph";
 import { useMemo } from "react";
 import type { FunctionComponent } from "react";
 
@@ -25,10 +31,30 @@ const outputData: ALTEditorOutputData = {
 const ALTEditor: FunctionComponent = () => {
   const blockTools = useMemo(
     () =>
-      outputData.blocks.map(({ id }) => {
+      outputData.blocks.map(({ id, type, data }) => {
+        const blockTool = new Paragraph({
+          api: {
+            i18n: {
+              t: (dictKey: string) => dictKey,
+            },
+            styles: {
+              block: "cdx-block",
+              inlineToolButton: "ce-inline-tool",
+              inlineToolButtonActive: "ce-inline-tool--active",
+              input: "cdx-input",
+              loader: "cdx-loader",
+              button: "cdx-button",
+              settingsButton: "cdx-settings-button",
+              settingsButtonActive: "cdx-settings-button--active",
+            },
+          },
+          config: {},
+          data,
+        });
+
         return {
           id,
-          html: `<p>data</p>`,
+          html: blockTool.render(), // HTMLElement
         };
       }),
     [outputData]
@@ -38,7 +64,7 @@ const ALTEditor: FunctionComponent = () => {
     <>
       {blockTools.map(({ id, html }) => (
         <div key={id}>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <div dangerouslySetInnerHTML={{ __html: html.outerHTML }} />
         </div>
       ))}
     </>
