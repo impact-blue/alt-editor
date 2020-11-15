@@ -1,5 +1,14 @@
 module.exports = {
   mode: "production",
+  entry: "./src/index.tsx",
+  externals: {
+    react: {
+      root: "React",
+      commonjs2: "react",
+      commonjs: "react",
+      amd: "react",
+    },
+  },
   module: {
     rules: [
       {
@@ -8,14 +17,13 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
-  },
-  entry: "./src/index.tsx",
   output: {
     filename: "index.js",
     library: "ALTEditor",
     libraryExport: "ALTEditor",
     libraryTarget: "umd",
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
 };

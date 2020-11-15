@@ -1,4 +1,5 @@
 import type { OutputBlockData, OutputData } from "@editorjs/editorjs";
+import { useMemo } from "react";
 import type { FunctionComponent } from "react";
 
 interface ALTEditorOutputData extends OutputData {
@@ -13,7 +14,7 @@ const outputData: ALTEditorOutputData = {
   blocks: [
     {
       id: "0000",
-      type: "text",
+      type: "paragraph",
       data: {
         text: "<p>TEST</p>",
       },
@@ -21,16 +22,28 @@ const outputData: ALTEditorOutputData = {
   ],
 };
 
-const ALTEditor: FunctionComponent = () => (
-  <div>
-    {outputData.blocks.map(({ id, type, data }) => (
-      <div key={id}>
-        <div>type: {type}</div>
-        <div>data: {JSON.stringify(data)}</div>
-      </div>
-    ))}
-  </div>
-);
+const ALTEditor: FunctionComponent = () => {
+  const blockTools = useMemo(
+    () =>
+      outputData.blocks.map(({ id }) => {
+        return {
+          id,
+          html: `<p>data</p>`,
+        };
+      }),
+    [outputData]
+  );
+
+  return (
+    <>
+      {blockTools.map(({ id, html }) => (
+        <div key={id}>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
+      ))}
+    </>
+  );
+};
 
 export { ALTEditor };
 export type { ALTEditorOutputData, ALTEditorOutputBlockData };
